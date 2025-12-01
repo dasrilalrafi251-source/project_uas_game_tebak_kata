@@ -7,11 +7,10 @@
 #include "pustaka.h"
 
 void shop(){ 
-
     do {
-    printf("\n======================\n");
-    printf("SELAMAT DATANG DI SHOP\n");
-    printf("======================\n");
+        printf("\n======================\n");
+        printf("SELAMAT DATANG DI SHOP\n");
+        printf("======================\n");
 
         printf("1. SKIN NAMA\n");
         printf("2. HINT\n");
@@ -21,23 +20,20 @@ void shop(){
         scanf(" %9s", &input);
 
         bool valid = true;
-            for (int i = 0; i < strlen(input); i++) {
-                if (!isdigit((unsigned char)input[i])) {
-                    valid = false;
-                    break;
-                }
+        for (int i = 0; i < strlen(input); i++) {
+            if (!isdigit((unsigned char)input[i])) {
+                valid = false;
+                break;
             }
-            if (!valid) {
-                printf("\n%sInput tidak valid. Masukkan angka 0 sampai 3.%s\n", RED, RESET);
-                shopy = -1;
-                int c;
-                while ((c = getchar()) != '\n' && c != EOF) {}
-                continue;
-            }
-            if (shopy == 0){
-                printf("\nSilahkan Datang Kembali\n");
-           }
-
+        }
+        if (!valid) {
+            printf("\n%sInput tidak valid. Masukkan angka 0 sampai 3.%s\n", RED, RESET);
+            shopy = -1;
+            int c;
+            while ((c = getchar()) != '\n' && c != EOF) {}
+            continue;
+        }
+        
         shopy = atoi(input);
 
         if(shopy == 1){
@@ -77,31 +73,31 @@ void shop(){
 
                 bool valid = true;
                 for (int i = 0; i < strlen(input); i++) {
-                if (!isdigit((unsigned char)input[i])) {
-                    valid = false;
-                    break;
-                        }
+                    if (!isdigit((unsigned char)input[i])) {
+                        valid = false;
+                        break;
                     }
-                    if (!valid) {
-                        printf("\n%sInput tidak valid. Masukkan angka 0 sampai 6.%s\n", RED, RESET);
-                        warna = -1;
-                        int c;
-                        while ((c = getchar()) != '\n' && c != EOF) {}
-                        continue;
-                    }
+                }
+                if (!valid) {
+                    printf("\n%sInput tidak valid. Masukkan angka 0 sampai 6.%s\n", RED, RESET);
+                    warna = -1;
+                    int c;
+                    while ((c = getchar()) != '\n' && c != EOF) {}
+                    continue;
+                }
 
-                    warna = atoi(input);
+                warna = atoi(input);
             
                 if (warna == 0){
                     printf("\nSilahkan Datang Kembali\n");
 
                 } else if (warna == 6) {
                     if (green || red | blue || purple || yellow) {
-                    strcpy(warnaNama, RESET);
-                    printf("\n%sWarna nama berhasil diganti!%s \n", GREEN, RESET);
-                    printf("\n=========================================\n");
-                    printf("Hai, %s%s%s! Namamu Balik Semula\n", warnaNama, nama, RESET);
-                    printf("=========================================\n");
+                        strcpy(warnaNama, RESET);
+                        printf("\n%sWarna nama berhasil diganti!%s \n", GREEN, RESET);
+                        printf("\n=========================================\n");
+                        printf("Hai, %s%s%s! Namamu Balik Semula\n", warnaNama, nama, RESET);
+                        printf("=========================================\n");
                     } else if (!green || !yellow || !red || !purple || !blue) {
                         printf("\n%sWarna nama tidak berubah!%s \n", YELLOW, RESET);
                         printf("=========================================\n");
@@ -185,14 +181,10 @@ void shop(){
                             printf("%sPilihan warna tidak valid.%s\n", RED, RESET);
                             break;
                     }
-                
-                
-                } else if (poin < 20) {
-                    printf("%sPoin anda tidak cukup%s\n", RED, RESET);
-                } else {
-                    printf("%sPilihan tidak valid.%s\n", RED, RESET);
+                } else if (warna != 0) {  // Perbaikan di sini: cek jika bukan 0-6
+                    printf("%sPilihan tidak valid. Masukkan angka 0 sampai 6.%s\n", RED, RESET);
                 }
-            }while (warna != 0);
+            } while (warna != 0);
         
         } else if (shopy == 2) {
             do {
@@ -208,50 +200,54 @@ void shop(){
 
                 bool valid = true;
                 for (int i = 0; i < strlen(input); i++) {
-                if (!isdigit((unsigned char)input[i])) {
-                    valid = false;
-                    break;
-                        }
+                    if (!isdigit((unsigned char)input[i])) {
+                        valid = false;
+                        break;
                     }
-                    if (!valid) {
-                        printf("\n%sInput tidak valid. Masukkan angka 0 sampai 3.%s\n", RED, RESET);
-                        belihint = -1;
-                        int c;
-                        while ((c = getchar()) != '\n' && c != EOF) {}
-                        continue;
-                    }
+                }
+                if (!valid) {
+                    printf("\n%sInput tidak valid. Masukkan angka 0 sampai 3.%s\n", RED, RESET);
+                    belihint = -1;
+                    int c;
+                    while ((c = getchar()) != '\n' && c != EOF) {}
+                    continue;
+                }
 
-                    belihint = atoi(input);
+                belihint = atoi(input);
                 
                 switch (belihint) {
-                case 1: 
-                    if (poin >= 2) {
-                        printf("%sBerhasil membeli 1 HINT%s\n", GREEN, RESET);
-                        poin -= 2;
-                        hint += 1;
-                    } else {
-                        printf("%sPoin anda tidak cukup%s\n", RED, RESET);
-                    }
-                    break;
-                case 2:
-                    if (poin >= 10) {
-                        printf("%sBerhasil membeli 5 HINT%s\n", GREEN, RESET);
-                        poin -= 10;
-                        hint += 5;
-                    } else {
-                        printf("%sPoin anda tidak cukup%s\n", RED, RESET);
-                    }
-                break;
-                case 3:
-                    if (poin >= 15) {
-                        printf("%sBerhasil membeli 10 HINT%s\n", GREEN, RESET);
-                        poin -= 15;
-                        hint += 10;
-                    } else {
-                        printf("%sPoin anda tidak cukup%s\n", RED, RESET);
-                    }
-                default:
-                    break;
+                    case 1: 
+                        if (poin >= 2) {
+                            printf("%sBerhasil membeli 1 HINT%s\n", GREEN, RESET);
+                            poin -= 2;
+                            hint += 1;
+                        } else {
+                            printf("%sPoin anda tidak cukup%s\n", RED, RESET);
+                        }
+                        break;
+                    case 2:
+                        if (poin >= 10) {
+                            printf("%sBerhasil membeli 5 HINT%s\n", GREEN, RESET);
+                            poin -= 10;
+                            hint += 5;
+                        } else {
+                            printf("%sPoin anda tidak cukup%s\n", RED, RESET);
+                        }
+                        break;
+                    case 3:
+                        if (poin >= 15) {
+                            printf("%sBerhasil membeli 10 HINT%s\n", GREEN, RESET);
+                            poin -= 15;
+                            hint += 10;
+                        } else {
+                            printf("%sPoin anda tidak cukup%s\n", RED, RESET);
+                        }
+                        break;
+                    case 0:
+                        break;
+                    default:
+                        printf("%sPilihan tidak valid. Masukkan angka 0 sampai 3.%s\n", RED, RESET);
+                        break;
                 }
             } while (belihint != 0);
 
