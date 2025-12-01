@@ -133,7 +133,7 @@ void List_kategori() {
             case 0: //kembali ke menu
                 break;
             default:
-                printf("\n%s1 sampai 5 bang, silahkan pilih kembali!%s\n", RED, RESET);
+                printf("\n%sInput tidak valid. Masukkan angka 0 sampai 6%s\n", RED, RESET);
                 break;
             }
     } while (kategori != 0);
